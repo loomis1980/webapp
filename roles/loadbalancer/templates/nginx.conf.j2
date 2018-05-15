@@ -1,4 +1,4 @@
-upstream test.internal.virtnet {
+upstream backend {
 {% for server in groups.webservers %}
 server {{ server }};
 {% endfor %}
@@ -8,6 +8,6 @@ server {
 listen 80;
 
 location / {
-proxy_pass http://test.internal.virtnet;
+proxy_pass http://backend;
 }
 }
