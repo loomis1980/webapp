@@ -4,4 +4,3 @@
   with_items:
     - vim
     - curl
-    - epel-release
