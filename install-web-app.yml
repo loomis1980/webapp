@@ -1,0 +1,8 @@
+---
+
+- name: Load balancer setup
+  hosts: loadbalancers
+  remote_user: root
+  roles:
+    - common
+    - loadbalancer
