@@ -5,3 +5,25 @@
 
 - name: Apache Webserver
   service: name=httpd state=started enabled=yes
+
+- name: Delete current index.html
+  file: path=/var/www/html/index.html state=absent
+  notify: restart httpd
+
+- hosts: web1.internal.virtnet
+  become: true
+  tasks:
+    - name: set up index.html for first web server
+      copy: content="<html>
+      <header><title> Welcome to Server 1 </title></header>
+      <body>Hello from server1</body></html>" dest=/var/www/html/index.html mode=0644
+      notify: restart httpd
+
+- hosts: web2.internal.virtnet
+  become: true
+  tasks:
+    - name: set up index.html for second web server
+      copy: content="<html>
+      <header><title>Welcome to Server 2</title></header>
+      <body>Hello from Server 2!</body></html>" dest=/var/www/html/index.html mode=0644
+      notify: restart httpd
