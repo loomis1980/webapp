@@ -12,10 +12,10 @@
 
 - hosts: web1.internal.virtnet
   become: true
-  template: src=index.j2 dest=/var/www/html/index.html
+  template: src=index.html dest=/var/www/html/index.html
   notify: restart httpd
   
 - hosts: web2.internal.virtnet
   become: true
-  template: src=index.j2 dest=/var/www/html/index.html
+  template: src=index.html dest=/var/www/html/index.html
   notify: restart httpd
