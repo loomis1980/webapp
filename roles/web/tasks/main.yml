@@ -1,7 +1,7 @@
 ---
 # Install and configure Apache webserver
--	name: WEBSERVER | Install Apache webserver
-	package: name=httpd state=present update_cache=yes
+- name: WEBSERVER | Install Apache webserver
+  package: name=httpd state=present update_cache=yes
 
 - name: Apache Webserver
-	service: name=httpd state=started enabled=yes
+  service: name=httpd state=started enabled=yes
