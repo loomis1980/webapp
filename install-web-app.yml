@@ -10,6 +10,6 @@
 - name: Web server setup
   hosts: webservers
   remote_user: root
-  Roles:
+  roles:
     - common
     - web
