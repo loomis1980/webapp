@@ -9,7 +9,7 @@
 - name: configure the load balancer
   template: 
     src=/home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/nginx.conf.j2
-    dest=/etc/nginx/sites-available/test.internal.virtnet
+    dest=/etc/nginx/sites-available/test.internal.virtnet.conf
     mode=0644
   notify: restart nginx
 
@@ -18,5 +18,5 @@
   notify: restart nginx
 
 - name: activate test site
-  file: src=/etc/nginx/sites-available/test.internal.virtnet dest=/etc/nginx/sites-enabled/test.internal.virtnet state=link
+  file: src=/etc/nginx/sites-available/test.internal.virtnet.conf dest=/etc/nginx/sites-enabled/test.internal.virtnet state=link
   notify: restart nginx
