@@ -23,7 +23,7 @@
   notify: restart nginx
 
 - name: install keepalived
-  package: keepalived state=present update_cache=yes
+  package: name=keepalived state=present update_cache=yes
   
 - hosts: lb1.internal.virtnet
   tasks:
