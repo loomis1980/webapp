@@ -2,3 +2,7 @@ nginx_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalan
 
 # floating IP for keepalived
 floating_ip: 10.0.0.99
+
+keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
+
+keepalived_dest_path: /etc/keepalived/
