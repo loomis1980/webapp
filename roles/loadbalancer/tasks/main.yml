@@ -23,8 +23,9 @@
   notify: restart nginx
 
 # keepalived install
-- name: install keepalived
-  package: keepalived state=present update_cache=yes
+
+-	name: install keepalived
+	package: keepalived state=present update_cache=yes
 
 -	name: start keepalived
 	service: name=keepalived state=started enabled=yes
@@ -46,6 +47,3 @@
 			dest: "{{ keepalived_dest_path }}/keepalived.conf"
 		notify:
 		-	restart keepalived
-    
-    notify:
-    - restart nginx
