@@ -5,3 +5,4 @@
     - vim
     - curl
     - epel-release
+    - psmisc
