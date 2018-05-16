@@ -22,26 +22,26 @@
     dest=/etc/nginx/nginx.conf
   notify: restart nginx
 
--	name: install keepalived
-	package: keepalived state=present update_cache=yes
+- name: install keepalived
+package: keepalived state=present update_cache=yes
 
 -	name: start keepalived
 	service: name=keepalived state=started enabled=yes
 
 -	hosts: lb1.internal.virtnet
-	tasks:
+  tasks:
 	- name: copy over the keepalived config for master server
-		template:
-			src: "{{ keepalived_config_path }}/keepalived.conf"
-			dest: "{{ keepalived_dest_path }}/keepalived.conf"
-		notify:
-		-	restart keepalived
+	  template:
+		  src: "{{ keepalived_config_path }}/keepalived.conf"
+		  dest: "{{ keepalived_dest_path }}/keepalived.conf"
+  notify:
+	  -	restart keepalived
 
--	hosts: lb2.internal.virtnet
-	tasks:
-		- name: copy over keepalived config for secondary server
-		template:
-			src: "{{ keepalived_config_path }}/keepalived2.conf"
-			dest: "{{ keepalived_dest_path }}/keepalived.conf"
-		notify:
-		-	restart keepalived
+- hosts: lb2.internal.virtnet
+  tasks:
+	  - name: copy over keepalived config for secondary server
+	  template:
+		  src: "{{ keepalived_config_path }}/keepalived2.conf"
+		  dest: "{{ keepalived_dest_path }}/keepalived.conf"
+	  notify:
+	  -	restart keepalived
