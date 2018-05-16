@@ -25,14 +25,17 @@
 - name: install keepalived
   package: name=keepalived state=present update_cache=yes
   
-- hosts: lb1.internal.virtnet
-  tasks:
-    - name: copy over the keepalived config for master server
-      template:
-        src: "{{ keepalived_config_path }}/keepalived.conf"
-        dest: "{{ keepalived_dest_path }}/keepalived.conf"
-      notify:
-      - restart keepalived
+- name: copy over hte keepalived config for master server
+  vars:
+    servers:
+      "lb1.internal.virtnet": "lb1"
+      "lb2.internal.virtnet": "lb2"
+  template:
+    src: "{{ keepalived_config_path }}/keepalived.conf"
+    dest: "{{ keepalived_dest_path }}/keepalived.conf"
+    when: servers[ansible_hostname] == "lb1"
+    notify:
+    - restart keepalived
       
 - hosts: lb2.internal.virtnet
   tasks:
