@@ -29,7 +29,7 @@
   template:
     src: "{{ keepalived_config_path }}/keepalived.conf"
     dest: "{{ keepalived_dest_path }}/keepalived.conf"
-    when: "{{ ansible_hostname }} == "lb1"
+    when: "{{ ansible_hostname }} == "lb1""
     notify:
       - restart keepalived
       
@@ -37,7 +37,7 @@
   template:
     src: "{{ keepalived_config_path }}/keepalived.conf2"
     dest: "{{ keepalived_dest_path }}/keepalived.conf"
-    when: "{{ ansible_hostname }} == "lb2"
+    when: "{{ ansible_hostname }} == "lb2""
     notify:
       - restart keepalived
       
