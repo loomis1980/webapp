@@ -29,7 +29,7 @@
   template:
     src:"{{ keepalived_config_path }}/keepalived.conf"
     dest:"{{ keepalived_dest_path }}/keepalived.conf"
-  when: "{{ ansible_hostname }} == {{ primarylb }}"
+  when: "ansible_hostname == primarylb"
   notify:
     - restart keepalived
       
@@ -37,7 +37,7 @@
   template:
     src="{{ keepalived_config_path }}/keepalived2.conf"
     dest:"{{ keepalived_dest_path }}/keepalived.conf"
-  when: "{{ ansible_hostname }} == {{ backuplb }}"
+  when: "ansible_hostname == backuplb"
   notify:
     - restart keepalived
       
