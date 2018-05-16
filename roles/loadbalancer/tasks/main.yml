@@ -29,17 +29,17 @@
   template:
     src: "{{ keepalived_config_path }}/keepalived.conf"
     dest: "{{ keepalived_dest_path }}/keepalived.conf"
-    when: "{{ ansible_hostname }} == 'lb1'"
-    notify:
-      - restart keepalived
+  when: "{{ ansible_hostname }} == 'lb1'"
+  notify:
+    - restart keepalived
       
 - name: copy over the keepalived config for backup server
   template:
     src: "{{ keepalived_config_path }}/keepalived.conf2"
     dest: "{{ keepalived_dest_path }}/keepalived.conf"
-    when: "{{ ansible_hostname }} == 'lb2'"
-    notify:
-      - restart keepalived
+  when: "{{ ansible_hostname }} == 'lb2'"
+  notify:
+    - restart keepalived
       
 - name: start and enable keepalived
   service: name=keepalived state=started enabled=yes
