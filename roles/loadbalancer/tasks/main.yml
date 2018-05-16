@@ -8,7 +8,7 @@
 
 - name: configure the load balancer
   template: 
-    src=/home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/backend.conf
+    src="{{ nginx_config_path }}/backend.conf"
     dest=/etc/nginx/conf.d/
     mode=0644
   notify: restart nginx
@@ -18,6 +18,6 @@
   
 - name: deploy the new nginx.conf file
   template:
-    src=/home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/nginx.conf
+    src="{{ nginx_config_path }}/nginx.conf"
     dest=/etc/nginx/nginx.conf
   notify: restart nginx
