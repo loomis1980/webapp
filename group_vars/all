@@ -4,6 +4,8 @@ nginx_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalan
 floating_ip: 10.0.0.99
 priority1: 101
 priority2: 100
+domain1: lb1.internal.virtnet
+domain2: lb2.internal.virtnet
 
 keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
 
