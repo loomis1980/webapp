@@ -1,0 +1,1 @@
+nginx_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
