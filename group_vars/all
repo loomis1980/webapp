@@ -6,8 +6,8 @@ priority1: 101
 priority2: 100
 domain1: lb1.internal.virtnet
 domain2: lb2.internal.virtnet
-primarylb: lb1.internal.virtnet
-backuplb: lb2.internal.virtnet
+primarylb: lb1
+backuplb: lb2
 
 keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
 
