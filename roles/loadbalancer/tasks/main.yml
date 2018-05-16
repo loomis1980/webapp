@@ -24,6 +24,9 @@
 
 - name: install keepalived
   package: name=keepalived state=present update_cache=yes
+
+- name: remove the default keepalived config file
+  file: path=/etc/keepalived/keepalived.conf state=absent
   
 - name: copy over the keepalived config for master server
   template:
