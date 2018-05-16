@@ -6,13 +6,9 @@
 - name: start nginx
   service: name=nginx state=started enabled=yes
 
-- name: delete old link
-  file: path=/etc/nginx/nginx.conf state=absent
-  notify: restart nginx
-
 - name: configure the load balancer
   template: 
-    src=/home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/nginx.conf
-    dest=/etc/nginx/nginx.conf
+    src=/home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/backend.conf
+    dest=/etc/nginx/conf.d/
     mode=0644
   notify: restart nginx
