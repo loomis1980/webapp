@@ -12,6 +12,12 @@
   remote_user: root
   roles:
     - keepalive
+    
+- name: Backup load balancer keepalive config
+  hosts: backup_lb
+  remote_user: root
+  roles:
+    - keepalive_backup
 
 - name: Web server setup
   hosts: webservers
