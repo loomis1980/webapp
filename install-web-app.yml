@@ -7,6 +7,12 @@
     - common
     - loadbalancer
 
+- name: Primary load balancer keepalived config
+  hosts: primary_lb
+  remote_user: root
+  roles:
+    - keepalive
+
 - name: Web server setup
   hosts: webservers
   remote_user: root
