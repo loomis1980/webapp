@@ -30,7 +30,7 @@
   
 - name: copy over the keepalived config
   copy:
-    src="{{ keepalived_config_path }}/lb_conf.j2"
+    src="{{ keepalived_config_path }}/lb_config.j2"
     dest=/etc/keepalived/keepalived.conf
   notify:
     - restart keepalived
