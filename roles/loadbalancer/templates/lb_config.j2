@@ -1,6 +1,40 @@
 {% if inventory_hostname == "primarylb" %}
-{% include "keepalived.conf" %}
+vrrp_script chk_nginx {
+  script "killall -0 nginx"
+  interval 2
+}
+
+vrrp_instance V1_1 {
+  interface eth0
+  state MASTER
+  virtual_router_id 51
+  priority 101
+  virtual_ipaddress {
+    10.0.0.99
+  }
+  
+  track_script {
+    chk_nginx weight 2
+  }
+}
 
 {% else %}
-{% include "keepalived2.conf" %}
+vrrp_script chk_nginx {
+  script "killall -0 nginx"
+  interval 2
+}
+
+vrrp_instance V1_1 {
+  interface eth0
+  state BACKUP
+  virtual_router_id 51
+  priority 100
+  virtual_ipaddress {
+    10.0.0.99
+  }
+  
+  track_script {
+    chk_nginx weight 2
+  }
+}
 {% endif %}
