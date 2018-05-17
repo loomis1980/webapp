@@ -43,7 +43,7 @@
   template:
     src="{{ keepalived_config_path }}/keepalived2.conf"
     dest=/etc/keepalived/keepalived.conf
-  when: inventory_hostname == "backup_lb"
+  when: inventory_hostname == "{{ backup_lb }}"
   notify:
     - restart keepalived
    
