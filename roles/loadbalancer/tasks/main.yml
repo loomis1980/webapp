@@ -30,9 +30,9 @@
   
 - name: copy over the keepalived config
   copy:
-    src:"{{ keepalived_config_path }}keepalived.conf"
+    src:"{{ keepalived_config_path }}/keepalived.conf"
     dest:/etc/keepalived/keepalived.conf
-  when: inventory_hostname == "primarylb"
+  when: inventory_hostname == "lb1.internal.virtnet"
   notify:
     - restart keepalived
     
