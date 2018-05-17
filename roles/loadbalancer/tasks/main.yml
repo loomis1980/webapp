@@ -28,7 +28,7 @@
 - name: remove the default keepalived config file
   file: path=/etc/keepalived/keepalived.conf state=absent
   
-- name: copy over the keepalived config for master server
+- name: copy over the keepalived config
   template:
     src:"{{ keepalived_config_path }}/keepalived.conf"
     dest:"{{ keepalived_dest_path }}/keepalived.conf"
