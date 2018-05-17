@@ -1,0 +1,6 @@
+{% if inventory_hostname == "primary_lb" %}
+{% include "keepalived.conf" %}
+
+{% else %}
+{% include "keepalived2.conf" %}
+{% endif %}
