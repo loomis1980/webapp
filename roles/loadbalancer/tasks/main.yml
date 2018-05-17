@@ -21,31 +21,3 @@
     src="{{ nginx_config_path }}/nginx.conf"
     dest=/etc/nginx/nginx.conf
   notify: restart nginx
-
-#- name: install keepalived
- # package: name=keepalived state=present update_cache=yes
-
-#- name: remove the default keepalived config file
- # file: path=/etc/keepalived/keepalived.conf state=absent
-  
-#- name: copy over the keepalived config for master server
- # template:
-  #  src:"{{ keepalived_config_path }}/keepalived.conf"
-   # dest:"{{ keepalived_dest_path }}/keepalived.conf"
-  #when: ansible_hostname == "primarylb"
-  #notify:
-   # - restart keepalived
-      
-#- name: copy over the keepalived config for backup server
- # template:
-  #  src="{{ keepalived_config_path }}/keepalived2.conf"
-   # dest:"{{ keepalived_dest_path }}/keepalived.conf"
-  #when: ansible_hostname == "backuplb"
-  #notify:
-   # - restart keepalived
-      
-- name: start and enable keepalived
-  service: name=keepalived state=started enabled=yes
-  notify:
-    - restart nginx
-    - restart keepalived
