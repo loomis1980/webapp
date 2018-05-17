@@ -6,8 +6,8 @@ floating_ip: 10.0.0.99
 priority1: 101
 priority2: 100
 
-primarylb: lb1.internal.virtnet
-backuplb: lb2
+primary_lb: lb1.internal.virtnet
+backup_lb: lb2.internal.virtnet
 
 keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
 
