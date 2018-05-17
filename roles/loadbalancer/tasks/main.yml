@@ -27,12 +27,15 @@
 
 - name: remove the default keepalived config file
   file: path=/etc/keepalived/keepalived.conf state=absent
-  
+
+- shell: hostname
+  register: hostname
+
 - name: copy over the keepalived config
   template:
     src="{{ keepalived_config_path }}/keepalived2.conf"
     dest=/etc/keepalived/keepalived.conf
-  when: ansible_hostname == "lb2"
+  when: hostname == "lb2.internal.virtnet"
   notify:
     - restart keepalived
    
