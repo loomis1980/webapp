@@ -1,14 +1,23 @@
+### nginx variables ###
 nginx_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
 
-# floating IP for keepalived
+### keepalivd variables ###
 floating_ip: 10.0.0.99
 priority1: 101
 priority2: 100
-domain1: lb1.internal.virtnet
-domain2: lb2.internal.virtnet
+
 primarylb: lb1
 backuplb: lb2
 
 keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
 
 keepalived_dest_path: /etc/keepalived/
+
+
+### glusterfs variables ###
+device: /dev/sdb
+xfs_options: -i size=512 -f {{ device }}
+
+# mount point for gluster disk
+mount_point_server1: /data/glusterfs/var-www/brick01
+mount_point_server2: /data/glusterfs/var-www/brick02
