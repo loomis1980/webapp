@@ -28,6 +28,12 @@
 - name: remove the default keepalived config file
   file: path=/etc/keepalived/keepalived.conf state=absent
   
+- set_fact:
+  host: "{{ inventory_hostname }}"
+  
+- debug:
+    var: hostvars[inventory_hostname]
+  
 - name: copy over the keepalived config
   copy:
     src="{{ keepalived_config_path }}/lb_config.j2"
