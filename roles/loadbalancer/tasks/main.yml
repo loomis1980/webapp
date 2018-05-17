@@ -29,11 +29,17 @@
   file: path=/etc/keepalived/keepalived.conf state=absent
   
 - name: copy over the keepalived config
-  template:
-    src:"{{ keepalived_config_path }}lb_config.j2"
+  copy:
+    src:"{{ keepalived_config_path }}keepalived.conf"
     dest:/etc/keepalived/keepalived.conf
+    when: inventory_hostname == "{{ primarylb }}"
   notify:
     - restart keepalived
+    
+- name: copy over the keepalived config to backup
+  copy:
+  src:"{{ keepalived_config_path }}/keepalived2.conf"
+  dest:/etc/keepalived/keepalived.conf
    
 - name: start and enable keepalived
   service: name=keepalived state=started enabled=yes
