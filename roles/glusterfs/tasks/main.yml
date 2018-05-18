@@ -40,14 +40,10 @@
   service: name=glusterd state=started enabled=yes
   
 - name: Creater glusterfs volume
-  gluster_volume:
-    state: present
-    name: data-www
-    bricks: /data/glusterfs/var-www/brick01
-    cluster:
-      - gluster1.internal.virtnet
-      - gluster2.internal.virtnet
-    run_once: true
+  gluster_volume: bricks=/data/glusterfs/var-www/brick01 force=true
+                  cluster={{groups.storage | join(",")}}
+                  replicas=2 name=www-data state=present
+  run_once: true
     
 - name: start gluster volume
   gluster_volume:
