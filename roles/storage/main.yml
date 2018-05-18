@@ -2,4 +2,5 @@
 
 - name: Create xfs file system on /dev/sdb
   filesystem: xfs
-  dev: 
+  dev: "{{ gluster_device }}"
+  opts: "{{ xfs_options }} "
