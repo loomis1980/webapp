@@ -1,9 +1,14 @@
 ---
 - name: install glusterfs
-  package: name=glusterfs state=present
-  
-- name: install glusterfs cli tools
-  package: name=glusterfs-cli state=present
+  package: name={{ item }} state=present
+  with_items:
+    - glusterfs-api
+    - glusterfs
+    - glusterfs-cli
+    - glusterfs-fuse
+    - glusterfs-geo-replication
+    - glusterfs-libs
+    - glusterfs-server
 
 - name: Ensure Gluster brick and mount directories exist
   file: "path={{ item }} state=directory mode=0776"
