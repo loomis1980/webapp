@@ -7,17 +7,11 @@
     - common
     - loadbalancer
 
-- name: Primary load balancer keepalived config
-  hosts: primary_lb
+- name: Glusterfs setup
+  hosts: storage
   remote_user: root
   roles:
-    - keepalive
-    
-- name: Backup load balancer keepalive config
-  hosts: backup_lb
-  remote_user: root
-  roles:
-    - keepalive_backup
+    - common
 
 - name: Web server setup
   hosts: webservers
