@@ -7,16 +7,16 @@
     - common
     - loadbalancer
 
-- name: Glusterfs setup
-  hosts: storage
-  remote_user: root
-  roles:
-    - common
-    - glusterfs
-
 - name: Web server setup
   hosts: webservers
   remote_user: root
   roles:
     - common
     - web
+ 
+ - name: Glusterfs setup
+  hosts: storage
+  remote_user: root
+  roles:
+    - common
+    - glusterfs
