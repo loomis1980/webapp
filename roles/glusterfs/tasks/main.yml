@@ -7,6 +7,8 @@
     - glusterfs-cli
     - glusterfs-fuse
     - glusterfs-libs
+    - centos-release-gluster
+    - glusterfs-server
 
 - name: Ensure Gluster brick and mount directories exist
   file: "path={{ item }} state=directory mode=0776"
