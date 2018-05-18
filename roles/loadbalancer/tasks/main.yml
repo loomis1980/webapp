@@ -28,14 +28,11 @@
 - name: remove the default keepalived config file
   file: path=/etc/keepalived/keepalived.conf state=absent
 
-- shell: hostname
-  register: hostname
-
 - name: copy over the keepalived config to primary
   template:
     src="{{ keepalived_config_path }}/keepalived.conf"
     dest=/etc/keepalived/keepalive.conf
-  when: inventory_hostname == "primary_lb"
+  when: inventory_hostname == "{{ primary_lb }}"
   notify:
     - restart keepalived
 
