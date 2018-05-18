@@ -31,7 +31,7 @@
 - name: copy over the keepalived config to primary
   template:
     src="{{ keepalived_config_path }}/keepalived.conf"
-    dest=/etc/keepalived/keepalive.conf
+    dest=/etc/keepalived/keepalived.conf
   when: inventory_hostname == "{{ primary_lb }}"
   notify:
     - restart keepalived
