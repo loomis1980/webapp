@@ -17,13 +17,23 @@
   notify: restart httpd
   
 - name: install glusterfs client
-  package: name=glusterfs-client state=present
+  package: name={{ item }}
+  with_item:
+    - glusterfs-client
+    - glusterfs-api
+    - glusterfs-cli
+    - glusterfs-libs
+    - glusterfs-fuse
+  state=present
   
 - name: create directory to mount glusterfs file system
   file:
     path=/data/var-www
     state=directory
     mode=0755
+
+- name: have to run this command in order to mount the client
+  raw: mknod -m 666 /dev/fuse
 
 - name: mount the glusterfs file system
   mount:
