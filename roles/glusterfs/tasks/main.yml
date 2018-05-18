@@ -35,3 +35,6 @@
     fstype: xfs
     src: /dev/sdb1
     state: mounted
+
+- name: Ensure glusterfs is running
+  service: name=glusterd state=started enabled=yes
