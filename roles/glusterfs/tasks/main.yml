@@ -28,3 +28,11 @@
     path: /data/glusterfs/var-www/brick01
     state: directory
     mode: 0755
+
+- name: mount the device on the directory
+  mount:
+    path: /data/glusterfs/var-www/brick01
+    fstype: xfs
+    src: /dev/sdb1
+    opts: defaults, 0 0
+    state: mounted
