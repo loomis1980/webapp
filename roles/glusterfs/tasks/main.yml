@@ -56,3 +56,5 @@
     name=var-www
     state=started
     
+# to-do set up firewall rules
+# mount the gluster volume in /etc/fstab
