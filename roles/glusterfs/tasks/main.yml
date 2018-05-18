@@ -13,7 +13,7 @@
 
 - name: create the partition
   parted:
-    device: /deb/sdb
+    device: /dev/sdb
     number: 1
     state: present
         
