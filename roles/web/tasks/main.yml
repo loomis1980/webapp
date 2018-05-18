@@ -32,7 +32,7 @@
     mode=0755
 
 - name: have to run this command in order to mount the client
-  raw: mknod -m 666 /dev/fuse
+  raw: mknod -m 666 /dev/fuse c 10 229
 
 - name: mount the glusterfs file system
   mount:
