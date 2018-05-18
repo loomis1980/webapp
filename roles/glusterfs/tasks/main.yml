@@ -1,6 +1,6 @@
 ---
 - name: install glusterfs
-  package: name=glusterfs-server state=present
+  package: name=glusterfs state=present
 
 - name: Ensure Gluster brick and mount directories exist
   file: "path={{ item }} state=directory mode=0776"
