@@ -21,6 +21,6 @@
   
 - name: create directory to mount glusterfs file system
   file:
-    path:/data/var-www
-    state: directory
-    mode: 0755
+    path=/data/var-www
+    state=directory
+    mode=0755
