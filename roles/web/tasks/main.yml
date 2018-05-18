@@ -17,7 +17,7 @@
   notify: restart httpd
   
 - name: install glusterfs client
-  package: name={{ item }}
+  package: name="{{ item }}"
   with_item:
     - glusterfs-client
     - glusterfs-api
