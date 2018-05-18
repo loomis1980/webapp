@@ -43,7 +43,7 @@
   gluster_volume:
     state: present
     name: data-www
-    bricks: /data/glusterfs/var-www/brick01/brick
+    bricks: /data/glusterfs/var-www/brick01
     cluster:
       - gluster1.internal.virtnet
       - gluster2.internal.virtnet
