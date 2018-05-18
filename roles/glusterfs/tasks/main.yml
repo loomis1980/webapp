@@ -10,6 +10,12 @@
     - centos-release-gluster
     - glusterfs-server
     - xfsprogs
+    
+- name: create xfs file system on /dev/sdb
+  filesystem:
+    fstype: xfs
+    dev: /dev/sdb
+    opts: -i size=512
 
 - name: Ensure Gluster brick and mount directories exist
   file: "path={{ item }} state=directory mode=0776"
