@@ -15,6 +15,6 @@ keepalived_dest_path: /etc/keepalived/
 
 
 ### glusterfs variables ###
-gluster_mount_dir: /mnt/gluster
 gluster_brick_dir: /srv/gluster/brick
-gluster_brick_name: gluster
+gluster_volume: www-data
+gluster_replicas: 2
