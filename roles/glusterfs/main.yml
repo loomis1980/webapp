@@ -1,5 +1,0 @@
----
-- name: Create xfs filesystem
-  filesystem: xfs
-  dev: /dev/sdb
-  opts: -i size=512 -f
