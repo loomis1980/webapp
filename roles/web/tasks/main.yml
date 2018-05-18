@@ -17,15 +17,14 @@
   notify: restart httpd
   
 - name: install glusterfs client
-  package: name="{{ item }}"
+  package: name={{ item }} state=installed
   with_items:
     - glusterfs-client
     - glusterfs-api
     - glusterfs-cli
     - glusterfs-libs
     - glusterfs-fuse
-  state=present
-  
+    
 - name: create directory to mount glusterfs file system
   file:
     path=/data/var-www
