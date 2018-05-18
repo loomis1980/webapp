@@ -15,7 +15,7 @@ keepalived_dest_path: /etc/keepalived/
 
 
 ### glusterfs variables ###
-device: /dev/sdb
+gluster_device: /dev/sdb
 xfs_options: -i size=512 -f {{ device }}
 
 # mount point for gluster disk
