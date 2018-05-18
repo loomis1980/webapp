@@ -10,24 +10,44 @@
     - centos-release-gluster
     - glusterfs-server
     - xfsprogs
-    
+
+- name: create the partition
+  parted:
+    device: /deb/sdb
+    number: 1
+    state: present
+        
 - name: create xfs file system on /dev/sdb
   filesystem:
     fstype: xfs
-    dev: /dev/sdb
+    dev: /dev/sdb1
     opts: -i size=512
 
-- name: Ensure Gluster brick and mount directories exist
-  file: "path={{ item }} state=directory mode=0776"
-  with_items:
-    - "{{ gluster_brick_dir }}"
-    - "{{ gluster_mount_dir }}"
+- name: create the mount directory
+  file: path=/data/gluster state=directory mode=0776
+
+- name: mount the new partition
+  mount:
+    path: /data/gluster
+    src: /dev/sdb1
+    fstype: xfs
+    opts: defaults,0,0
+    state: present
+
+- name: Create brick directory
+  file: path=/data/gluster/gv0 state=directory mode=0776
+    
+#- name: Ensure Gluster brick and mount directories exist
+  #file: "path={{ item }} state=directory mode=0776"
+  #with_items:
+    #- "{{ gluster_brick_dir }}"
+    #- "{{ gluster_mount_dir }}"
 
 - name: Configure gluster volume
   gluster_volume:
     state: present
-    name: "{{ gluster_brick_name }}"
-    brick: "{{ gluster_brick_dir }}"
+    name: www-data
+    brick: /data/gluster/gv0
     replicas: 2
     cluster: "{{ groups.storage | join(',') }}"
     host: "{{ inventory_hostname }}"
@@ -36,8 +56,8 @@
   
 - name: Ensure gluster volume is mounted
   mount: 
-    name: "{{ gluster_mount_dir }}"
-    src: "{{ groups.storage[0] }}:/{{ gluster_brick_name }}"
+    name: www-data
+    src: "{{ groups.storage[0] }}:/data/gluster/gv0"
     fstype: glusterfs
     opts: "defaults,_netdev"
     state: mounted
