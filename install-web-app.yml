@@ -18,4 +18,4 @@
   remote_user: root
   roles:
     - common
-    - diststorage
+    - glusterfs
