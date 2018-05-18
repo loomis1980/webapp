@@ -12,6 +12,7 @@
   remote_user: root
   roles:
     - common
+    - storage
 
 - name: Web server setup
   hosts: webservers
