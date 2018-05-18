@@ -53,7 +53,7 @@
     
 - name: start gluster volume
   gluster_volume:
-    name=var-www
+    name=www-data
     state=started
     
 # to-do set up firewall rules
