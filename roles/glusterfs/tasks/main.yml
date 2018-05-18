@@ -16,3 +16,9 @@
     device: /dev/sdb
     number: 1
     state: present
+    
+- name: create the file system
+  filesystem:
+    fstype: xfs
+    dev: /dev/sdb1
+    opts: -i size=512
