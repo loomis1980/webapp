@@ -1,21 +1,21 @@
 ---
-#- name: Load balancer setup
- # hosts: loadbalancers
-  #remote_user: root
-  #roles:
-   # - common
-    #- loadbalancer
+- name: Load balancer setup
+  hosts: loadbalancers
+  remote_user: root
+  roles:
+    - common
+    - loadbalancer
 
-#- name: Web server setup
- # hosts: webservers
-  #remote_user: root
-  #roles:
-   # - common
-    #- web
+- name: Web server setup
+  hosts: webservers
+  remote_user: root
+  roles:
+    - common
+    - web
  
 - name: Glusterfs setup
   hosts: storage
   remote_user: root
   roles:
-    #- common
-    - glusterfs
+    - common
+    - diststorage
