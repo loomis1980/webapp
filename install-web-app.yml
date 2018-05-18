@@ -12,7 +12,7 @@
   remote_user: root
   roles:
     - common
-    - storage
+    - glusterfs
 
 - name: Web server setup
   hosts: webservers
