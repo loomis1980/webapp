@@ -44,9 +44,11 @@
     bricks=/data/glusterfs/var-www/brick01 
     force=true
     cluster={{groups.storage | join(",")}}
-    replicas=2 name=www-data state=present
-    host: "{{ ansible_default_ipv4.address }}"
-    transport: tcp
+    replicas=2 
+    name=www-data 
+    state=present
+    host="{{ ansible_default_ipv4.address }}"
+    transport=tcp
   run_once: true
     
 - name: start gluster volume
