@@ -43,17 +43,27 @@
     #- "{{ gluster_brick_dir }}"
     #- "{{ gluster_mount_dir }}"
 
-- name: Configure gluster volume
-  gluster_volume:
-    state: present
-    name: www-data
-    brick: /data/gluster/gv0
-    replicas: 2
-    cluster: "{{ groups.storage | join(',') }}"
-    host: "{{ inventory_hostname }}"
-    force: no
-  run_once: true
+#- name: Configure gluster volume
+  #gluster_volume:
+    #state: present
+    #name: www-data
+    #brick: /data/gluster/gv0
+    #replicas: 2
+    #cluster: "{{ groups.storage | join(',') }}"
+    #host: "{{ inventory_hostname }}"
+    #force: no
+  #run_once: true
   
+- name: create the gluster volume
+  raw: gluster volume create gv0 replica 2 gfs1.internal.virtnet:/data/gluster/gv0 gfs2.internal.virtnet:/data/gluster/gv0
+  args:
+    executable: /bin/bash
+    
+- name: start the volume
+  raw: gluster volume start gv0
+  args:
+    executable: /bin/bash
+    
 - name: Ensure gluster volume is mounted
   mount: 
     name: www-data
