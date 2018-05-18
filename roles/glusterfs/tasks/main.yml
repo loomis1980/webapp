@@ -53,6 +53,6 @@
     
 - name: start gluster volume
   gluster_volume:
-    name=data-www
+    name=var-www
     state=started
     
