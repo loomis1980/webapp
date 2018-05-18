@@ -10,14 +10,11 @@
   file: path=/var/www/html/index.html state=absent
   notify: restart httpd
 
-- hosts: web1.internal.virtnet
+- name: copy over the index.html
   template: 
     src=/home/louis/code/ansible/playbooks/app/webapp/roles/web/template/index.html 
     dest=/var/www/html/index.html
   notify: restart httpd
   
-- hosts: web2.internal.virtnet
-  template: 
-    src=/home/louis/code/ansible/playbooks/app/webapp/roles/web/template/index.html 
-    dest=/var/www/html/index.html
-  notify: restart httpd
+- name: install glusterfs client
+  package: name=glusterfs-client state=present
