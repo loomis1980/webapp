@@ -30,5 +30,4 @@
     path=/data/var-www
     src=gluster1.internal.virtnet:/www-data
     fstype=glusterfs
-    opts=defaults,_netdev,fetch-attempts=5
     state=mounted    
