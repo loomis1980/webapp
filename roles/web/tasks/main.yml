@@ -18,7 +18,7 @@
   
 - name: install glusterfs client
   package: name="{{ item }}"
-  with_item:
+  with_items:
     - glusterfs-client
     - glusterfs-api
     - glusterfs-cli
