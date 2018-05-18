@@ -24,3 +24,13 @@
     path=/data/var-www
     state=directory
     mode=0755
+
+- name: mount the glusterfs file system
+  mount:
+    path=/data/var-www
+    src=gluster1.internal.virtnet:/www-data
+    fstype=glusterfs
+    opts=t 
+    state=mounted
+    
+    
