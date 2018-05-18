@@ -58,3 +58,4 @@
     
 # to-do set up firewall rules
 # mount the gluster volume in /etc/fstab
+# refactor to use variables instead of hard coding
