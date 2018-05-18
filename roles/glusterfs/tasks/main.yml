@@ -22,3 +22,9 @@
     fstype: xfs
     dev: /dev/sdb1
     opts: -i size=512
+
+- name: make the directory for the bricks
+  file:
+    path: /data/glusterfs/var-www/brick01
+    state: directory
+    mode: 0755
