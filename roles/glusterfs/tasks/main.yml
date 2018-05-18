@@ -6,9 +6,7 @@
     - glusterfs
     - glusterfs-cli
     - glusterfs-fuse
-    - glusterfs-geo-replication
     - glusterfs-libs
-    - glusterfs-server
 
 - name: Ensure Gluster brick and mount directories exist
   file: "path={{ item }} state=directory mode=0776"
