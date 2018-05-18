@@ -1,5 +1,3 @@
----
-
 - parted: Create a new primary partition
   device: "{{ gluster_device }}"
   number: 1
