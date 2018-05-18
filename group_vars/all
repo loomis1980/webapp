@@ -15,9 +15,6 @@ keepalived_dest_path: /etc/keepalived/
 
 
 ### glusterfs variables ###
-gluster_device: /dev/sdb
-xfs_options: -i size=512 -f {{ device }}
-
-# mount point for gluster disk
-mount_point_server1: /data/glusterfs/var-www/brick01
-mount_point_server2: /data/glusterfs/var-www/brick02
+gluster_mount_dir: /mnt/gluster
+gluster_brick_dir: /srv/gluster/brick
+gluster_brick_name: gluster
