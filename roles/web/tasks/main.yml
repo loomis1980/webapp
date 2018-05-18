@@ -18,3 +18,9 @@
   
 - name: install glusterfs client
   package: name=glusterfs-client state=present
+  
+- name: create directory to mount glusterfs file system
+  file:
+    path:/data/var-www
+    state: directory
+    mode: 0755
