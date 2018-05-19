@@ -3,7 +3,7 @@ This is a work in progress bear with me.
 The end goal is to provide a scalable and highly available web application infrastructure.
 
 To do list
-convert existing infrastructure to ansible playbooks
+convert existing infrastructure to ansible playbooks and get into a working state
 - Remove hard coding
 - maintain idempotence
 - Add support for Debian distributions
@@ -15,3 +15,4 @@ convert existing infrastructure to ansible playbooks
   Database
   - setup postgresql cluster with pgpool II
   - setup mysql cluster for apps like wordpress
+Lastly, remove all secondary machines and re-add to cluster/s to make sure its working correctly
