@@ -41,3 +41,5 @@
     fstype=glusterfs
     opts=defaults,_netdev
     state=mounted    
+# to do
+# add php-fpm
