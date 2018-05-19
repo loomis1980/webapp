@@ -26,11 +26,11 @@ gluster_bricks:
   - /data/glusterfs/var-www/brick02 #etc
 
 ### Apache vhost variables ###
-my_domain: website1
-fqdn: website1.internal.virtnet
-admin_email:
-doc_root: /data/var-www/html/{{ my_domain }}
-server_name: "{{ fqdn }}"
-server_alias: www.{{ fqdn }}
-domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
-domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
+vhost_domain: website1
+vhost_fqdn: website1.internal.virtnet
+vhost_admin_email:
+vhost_doc_root: /data/var-www/html/{{ vhost_domain }}
+vhost_server_name: "{{ vhost_fqdn }}"
+vhost_server_alias: www.{{ vhost_fqdn }}
+vhost_domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
+vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
