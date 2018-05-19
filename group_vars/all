@@ -21,10 +21,11 @@ gluster_replicas: 2
 
 ### Apache vhost variables ###
 admin_email:
-doc_root: /var/www/html/your_domain
-server_name: your_domain.com
-server_alias: www.your_domain.com
-domain_error_log: /var/log/httpd/your_comain.com-error_log
-access_log: /var/log/httpd/your_domain.com-access_log combined
+doc_root: /data/www-data/html/{{ my_domain }}
+server_name: "{{ fqdn }}
+server_alias: www.{{ fqdn }}
+domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
+access_log: /var/log/httpd/{{ fqdn }}-access_log combined
 
-my_domain: website.internal.virtnet
+my_domain: website1
+fqdn: website1.internal.virtnet
