@@ -15,12 +15,13 @@ keepalived_dest_path: /etc/keepalived/
 
 
 ### glusterfs variables ###
-src_device: /dev/sdb1
-part_device: /dev/sdb
-file_system: xfs
-replica_number: 2
-volume_name: www-data
-transport_type: tcp
+gluster_src_device: /dev/sdb1
+gluster_part_device: /dev/sdb
+gluster_file_system: xfs
+gluster_replica_number: 2
+gluster_volume_name: www-data
+gluster_transport_type: tcp
+gluster_brick: 
 
 ### Apache vhost variables ###
 my_domain: website1
