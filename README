@@ -7,8 +7,8 @@ To do list
 - maintain idempotence
 - Add support for Debian distributions
 - create firewall/iptables rules
-- setup centralized logging
-- setup monitoring
+- convert ELK stack to playbook
+- convert icinga2 to playbook
   Apache to do list
   - setup memcache for session caching
   Database
