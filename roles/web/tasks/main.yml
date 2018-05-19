@@ -43,3 +43,4 @@
     state=mounted    
 # to do
 # add php-fpm
+# add memcached for session caching
