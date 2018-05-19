@@ -4,6 +4,8 @@ The end goal is to provide a scalable and highly available web application infra
 
 To do list
 - Remove hard coding
+- maintain idempotence
+- Add support for Debian distributions
 - create firewall/iptables rules
 - setup centralized logging
 - setup monitoring
