@@ -20,12 +20,11 @@ gluster_volume: www-data
 gluster_replicas: 2
 
 ### Apache vhost variables ###
+my_domain: website1
+fqdn: website1.internal.virtnet
 admin_email:
 doc_root: /data/www-data/html/{{ my_domain }}
 server_name: "{{ fqdn }}
 server_alias: www.{{ fqdn }}
 domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
 access_log: /var/log/httpd/{{ fqdn }}-access_log combined
-
-my_domain: website1
-fqdn: website1.internal.virtnet
