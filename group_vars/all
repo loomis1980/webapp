@@ -18,7 +18,7 @@ keepalived_dest_path: /etc/keepalived/
 gluster_src_device: /dev/sdb1
 gluster_part_device: /dev/sdb
 gluster_file_system: xfs
-gluster_fs_opts: -i size=512
+gluster_xfs_fs_opts: -i size=512
 gluster_replica_number: 2
 gluster_volume_name: www-data
 gluster_transport_type: tcp
