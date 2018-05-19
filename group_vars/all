@@ -21,7 +21,9 @@ gluster_file_system: xfs
 gluster_replica_number: 2
 gluster_volume_name: www-data
 gluster_transport_type: tcp
-gluster_brick: 
+gluster_bricks:
+  - /data/glusterfs/var-www/brick01
+  - /data/glusterfs/var-www/brick02 #etc
 
 ### Apache vhost variables ###
 my_domain: website1
