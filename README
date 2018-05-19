@@ -3,12 +3,13 @@ This is a work in progress bear with me.
 The end goal is to provide a scalable and highly available web application infrastructure.
 
 To do list
+convert existing infrastructure to ansible playbooks
 - Remove hard coding
 - maintain idempotence
 - Add support for Debian distributions
 - create firewall/iptables rules
-- convert ELK stack to playbook
-- convert icinga2 to playbook
+- setup ELK stack
+- setup monitoring
   Apache to do list
   - setup memcache for session caching
   Database
