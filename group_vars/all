@@ -27,4 +27,4 @@ doc_root: /data/www-data/html/{{ my_domain }}
 server_name: "{{ fqdn }}"
 server_alias: www.{{ fqdn }}
 domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
-access_log: /var/log/httpd/{{ fqdn }}-access_log combined
+domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
