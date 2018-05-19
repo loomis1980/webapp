@@ -10,9 +10,7 @@ primary_lb: lb1.internal.virtnet
 backup_lb: lb2.internal.virtnet
 
 keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
-
 keepalived_dest_path: /etc/keepalived/
-
 
 ### glusterfs variables ###
 gluster_src_device: /dev/sdb1
