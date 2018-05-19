@@ -2,3 +2,13 @@ This is a work in progress bear with me.
 
 The end goal is to provide a scalable and highly available web application infrastructure.
 
+To do list
+- Remove hard coding
+- create firewall/iptables rules
+- setup centralized logging
+- setup monitoring
+  Apache to do list
+  - setup memcache for session caching
+  Database
+  - setup postgresql cluster with pgpool II
+  - setup mysql cluster for apps like wordpress
