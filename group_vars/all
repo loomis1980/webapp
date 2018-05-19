@@ -26,6 +26,7 @@ gluster_bricks:
   - /data/glusterfs/var-www/brick02 #etc
 
 ### Apache vhost variables ###
+vhost_port: 80
 vhost_domain: website1
 vhost_fqdn: website1.internal.virtnet
 vhost_admin_email:
