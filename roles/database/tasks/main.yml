@@ -1,0 +1,16 @@
+---
+
+- name: download postgresql repo
+  get_url: dest=/etc/yum.repos.d/postgresql96.repo
+           url=https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+           
+- name: set repo file permissions
+  file: owner=root group=root mode=0644
+        path=/etc/yum.repos.d/postgresql96.repo
+
+- name: install the server packages
+  package: name={{ item }} state=installed enablerepo=postgresql96
+  with_items:
+    - postgresql96
+    - postgresql96-server
+    - libevent-devel
