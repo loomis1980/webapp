@@ -14,7 +14,7 @@
     - oddjob-mkhomedir
     
 - name: oddjob and openssh-server should be enabled
-  service: name= {{ item }} state=started enabled=yes
+  service: name= {{ item }} enabled=yes
   with_items:
     - sshd
     - oddjobd
