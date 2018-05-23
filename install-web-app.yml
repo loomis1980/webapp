@@ -19,3 +19,10 @@
   roles:
     - common
     - glusterfs
+
+- name: freeipa client install
+  hosts: all
+  remote_user: root
+  roles:
+    - common
+    - freeipa
