@@ -1,7 +1,7 @@
 #!/bin/expect -f
 
-set my_name {{ user_name }}
-set my_pass {{ password }}
+set my_name [lindex %argv 0];
+set my_pass [lindex %argv 1];
 
 set timeout -1
 spawn ipa-client-install --mkhomedir --ssh-trust-dns
