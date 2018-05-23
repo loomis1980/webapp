@@ -48,15 +48,15 @@
 - name: run expect script to install ipa-client
   shell:  |
     set timeout 1
-    spawn ipa-client-install --mkhomedir --ssh-trust-dns
+    spawn ipa-client-install  
     expect "*Continue"
-    send -- "yes\n"
+    send -- "yes"
     expect "*User"
-    send -- "{{ username }}\n"
+    send -- "{{ username }}"
     expect "*Password"
-    send -- "{{ password }}\n"
+    send -- "{{ password }}"
     exit 0
   args:
-    executable: /bin/expect -f
+    executable: /bin/expect
   delegate_to: localhost
   
