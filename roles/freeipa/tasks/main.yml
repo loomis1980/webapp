@@ -34,7 +34,7 @@
   - name: wait for server to boot backup
     local_action: wait_for
     args:
-      host: ''
+      host: "{{ inventory_hostname }}"
       port: 22
       delay: 30
       timeout: 600
