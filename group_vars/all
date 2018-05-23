@@ -37,3 +37,5 @@ vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
 
 ssh_opts: --ssh-trust-dns
 mkhome: --mkhomedir
+
+script_location: /home/louis/code/ansible/playbooks/app/webapp/roles/freeipa/files/ipa_script.sh
