@@ -17,4 +17,6 @@ convert existing infrastructure to ansible playbooks and get into a working stat
   - setup postgresql cluster with pgpool II
   Freeipa
   - add all newly created machines to the freeipa cluster (tired of typing passwords)
+  Glusterfs
+  - switch this over to use LVM for expandability
 Lastly, remove all secondary machines and re-add to cluster/s to make sure its working correctly
