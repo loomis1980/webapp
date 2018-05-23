@@ -14,6 +14,7 @@
     - freeipa-client
     - oddjob
     - oddjob-mkhomedir
+    - rc
     
 - name: oddjob and openssh-server should be enabled
   service: name= {{ item }} enabled=yes
