@@ -45,5 +45,5 @@
     become: false
   when: expect_install.stat.exists == False
   
-- script: "{{ script_location }}{{ username }}{{ password }}"
+- script: "{{ script_location }}  {{ username }}  {{ password }}"
   
