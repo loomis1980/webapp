@@ -14,5 +14,6 @@ convert existing infrastructure to ansible playbooks and get into a working stat
   - setup memcache for session caching
   Database
   - setup postgresql cluster with pgpool II
-  - setup mysql cluster for apps like wordpress
+  Freeipa
+  - add all newly created machines to the freeipa cluster (tired of typing passwords)
 Lastly, remove all secondary machines and re-add to cluster/s to make sure its working correctly
