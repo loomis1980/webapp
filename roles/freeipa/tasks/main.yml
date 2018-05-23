@@ -1,5 +1,7 @@
 ---
 
+- include_vars: data_vars.yml
+
 # I want to see if these packages are installed and if they aren't I want to reboot afterward, but if they are installed then I don't want to reboot, lets see if this works
 - stat: path=/bin/expect
   register: expect_install
