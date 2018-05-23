@@ -1,5 +1,9 @@
 ---
 
+# I want to see if these packages are installed and if they aren't I want to reboot afterward, but if they are installed then I don't want to reboot, lets see if this works
+- stat: path=/bin/expect
+  register: expect_install
+
 - name: install packages
   package: name={{ item }} state=present
   with_items:
@@ -15,5 +19,42 @@
     - sshd
     - oddjobd
   notify:
-    - reload sshd
-    - reload oddjobd
+    - restart sshd
+    - restart oddjobd
+    
+# I have ran into an issue before where the oddjob daemon will not start until the server is rebooted
+- block:
+  - name: reboot server
+    shell: sleep 10 && shutdown -r now "Ansible reboot"
+    async: 300
+    poll: 0
+    ignore_errors: true
+    become: true
+    
+  - name: wait for server to boot backup
+    local_action: wait_for
+    args:
+      host: ''
+      port: 22
+      delay: 30
+      timeout: 600
+      state: started
+    become: false
+  when: expect_install.stat.exists == False
+  
+# After server is rebooted install free-ipa-client
+- name: run expect script to install ipa-client
+  shell:  |
+    set timeout 1
+    spawn ipa-client-install --mkhomedir --ssh-trust-dns
+    expect "*Continue"
+    send -- "yes\r"
+    expect "*User"
+    send -- "{{ username }}\r"
+    expect "*Password"
+    send -- "{{ password }}\r"
+    expect EOF
+  args:
+    executable: /bin/expect
+  delegate_to: localhost
+  
