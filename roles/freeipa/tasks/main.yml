@@ -1,1 +1,19 @@
 ---
+
+- name: install packages
+  package: name={{ item }} state=present
+  with_items:
+    - openssh-server
+    - expect
+    - freeipa-client
+    - oddjob
+    - oddjob-mkhomedir
+    
+- name: oddjob and openssh-server should be enabled
+  service: name= {{ item }} state=started enabled=yes
+  with_items:
+    - sshd
+    - oddjobd
+  notify:
+    - reload sshd
+    - reload oddjobd
