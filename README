@@ -11,6 +11,7 @@ convert existing infrastructure to ansible playbooks and get into a working stat
 - setup ELK stack
 - setup monitoring
   Apache to do list
+  - install php-fpm
   - setup memcache for session caching
   Database
   - setup postgresql cluster with pgpool II
