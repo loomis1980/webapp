@@ -21,7 +21,7 @@
     - glusterfs
 
 - name: freeipa client install
-  hosts: all
+  hosts: freeipatest
   remote_user: root
   roles:
     - common
