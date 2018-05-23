@@ -45,19 +45,5 @@
     become: false
   when: expect_install.stat.exists == False
   
-# After server is rebooted install free-ipa-client
-- name: run expect script to install ipa-client
-  shell:  |
-    set timeout 1
-    spawn /usr/sbin/ipa-client-install {{ ssh_opts }} {{ mkhome }}
-    expect "*Continue"
-    send -- "yes"
-    expect "*User"
-    send -- "{{ username }}"
-    expect "*Password"
-    send -- "{{ password }}"
-    exit 0
-  args:
-    executable: /bin/expect
-  delegate_to: localhost
+- script: 
   
