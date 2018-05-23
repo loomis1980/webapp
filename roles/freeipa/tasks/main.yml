@@ -50,13 +50,13 @@
     set timeout 1
     spawn ipa-client-install --mkhomedir --ssh-trust-dns
     expect "*Continue"
-    send -- "yes\r"
+    send -- "yes\n"
     expect "*User"
-    send -- "{{ username }}\r"
+    send -- "{{ username }}\n"
     expect "*Password"
-    send -- "{{ password }}\r"
-    expect EOF
+    send -- "{{ password }}\n"
+    exit 0
   args:
-    executable: /bin/expect
+    executable: /bin/expect -f
   delegate_to: localhost
   
