@@ -34,3 +34,6 @@ vhost_server_name: "{{ vhost_fqdn }}"
 vhost_server_alias: www.{{ vhost_fqdn }}
 vhost_domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
 vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
+
+ssh_opts: --ssh-trust-dns
+mkhome: --mkhomedir
