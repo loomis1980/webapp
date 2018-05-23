@@ -2,6 +2,8 @@ This is a work in progress bear with me.
 
 The end goal is to provide a scalable and highly available web application infrastructure.
 
+I should probably make this stuff more modular. In time.
+
 To do list
 convert existing infrastructure to ansible playbooks and get into a working state
 - Remove hard coding
