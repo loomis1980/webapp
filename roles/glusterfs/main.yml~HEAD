@@ -1,0 +1,11 @@
+---
+
+- parted: Create a new primary partition
+  device: "{{ gluster_device }}"
+  number: 1
+  state: present
+  
+- name: Create xfs file system on /dev/sdb
+  filesystem: xfs
+  dev: "{{ gluster_device }}1"
+  opts: "{{ xfs_options }} "
