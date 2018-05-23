@@ -48,7 +48,7 @@
 - name: run expect script to install ipa-client
   shell:  |
     set timeout 1
-    spawn ipa-client-install  
+    spawn ipa-client-install {{ ssh_opts }} {{ mkhome }}
     expect "*Continue"
     send -- "yes"
     expect "*User"
