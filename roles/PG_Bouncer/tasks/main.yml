@@ -2,7 +2,7 @@
 
 - name: download postgresql repo
   get_url:
-    url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    url: http://dl.fedoraproject.org/pub/fedora/linux/development/28/Everything/source/tree/Packages/p/pgbouncer-1.8.1-2.fc28.src.rpm
     dest: /etc/yum.repos.d/
     mode: 0644
   
