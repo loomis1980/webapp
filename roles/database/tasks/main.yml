@@ -15,6 +15,9 @@
     - postgresql96-contrib
     - python-psycopg2
     - libevent-devel
+    
+- name: Initialize the database
+  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
 
 - name: start the postgresql service
   service: name=postgresql-9.6.service state=started enabled=yes
