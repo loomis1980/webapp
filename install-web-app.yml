@@ -26,3 +26,10 @@
   roles:
     - common
     - freeipa
+
+- name: postgresql db install
+  hosts: databases
+  remote_user: root
+    roles:
+    - common
+    - database
