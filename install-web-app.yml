@@ -33,3 +33,10 @@
   roles:
     - common
     - database
+
+- name: PG_Bouncer
+  hosts: bouncers
+  remote_user: root
+  roles:
+    - common
+    - pg_bouncer
