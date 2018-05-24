@@ -1,8 +1,8 @@
 ---
 
 - get_url: https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-6-x86_64/pgdg-ami201503-93-9.3-3.noarch.rpm
-    dest: /etc/yum.repos.d/
-    mode: 0644
+    dest=/etc/yum.repos.d/
+    mode=0644
   
 - name: Install pgbouncer
   yum:
