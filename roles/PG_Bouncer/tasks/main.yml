@@ -1,15 +1,9 @@
 ---
 
 - name: download postgresql repo
-  get_url:
-    url: http://dl.fedoraproject.org/pub/fedora/linux/development/28/Everything/source/tree/Packages/p/pgbouncer-1.8.1-2.fc28.src.rpm
-    dest: /etc/yum.repos.d/
-    mode: 0644
-  
-- name: Install pgbouncer
-  yum:
-    name: pgbouncer
-    state: present
-  
-- name: start and enable pgbouncer
-  service: name=pgbouncer state=started enabled=yes
+  unarchive:
+    src: https://pgbouncer.github.io/downloads/files/1.8.1/pgbouncer-1.8.1.tar.gz
+    dest: /pgbouncer
+    remote_src: yes
+
+
