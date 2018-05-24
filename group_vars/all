@@ -1,5 +1,5 @@
 ### nginx variables ###
-nginx_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
+nginx_config_path: webapp/roles/loadbalancer/templates/
 
 ### keepalivd variables ###
 floating_ip: 10.0.0.99
@@ -9,7 +9,7 @@ priority2: 100
 primary_lb: lb1.internal.virtnet
 backup_lb: lb2.internal.virtnet
 
-keepalived_config_path: /home/louis/code/ansible/playbooks/app/webapp/roles/loadbalancer/templates/
+keepalived_config_path: webapp/roles/loadbalancer/templates/
 keepalived_dest_path: /etc/keepalived/
 
 ### glusterfs variables ###
@@ -38,4 +38,4 @@ vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
 ssh_opts: --ssh-trust-dns
 mkhome: --mkhomedir
 
-script_location: /home/louis/code/ansible/playbooks/app/webapp/roles/freeipa/files/ipa_script.sh
+script_location: webapp/roles/freeipa/files/ipa_script.sh
