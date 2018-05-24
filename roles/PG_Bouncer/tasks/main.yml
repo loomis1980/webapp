@@ -1,1 +1,7 @@
 ---
+
+- name: Install pgbouncer
+  package: name=pgbouncer state=present
+  
+- name: start and enable pgbouncer
+  service: name=pgbouncer state=started enabled=yes
