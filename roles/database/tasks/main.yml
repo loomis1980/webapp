@@ -17,3 +17,6 @@
     - postgresql96-contrib
     - python-psycopg2
     - libevent-devel
+
+- name: start the postgresql service
+  service: name=postgresql-9.6.service state=started enabled=yes
