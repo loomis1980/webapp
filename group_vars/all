@@ -38,4 +38,4 @@ vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
 ssh_opts: --ssh-trust-dns
 mkhome: --mkhomedir
 
-script_location: webapp/roles/freeipa/files/ipa_script.sh
+script_location: /home/ls1980/code/webapp/roles/freeipa/files/ipa_script.sh
