@@ -39,4 +39,4 @@
   remote_user: root
   roles:
     - common
-    - pg_bouncer
+    - PG_Bouncer
