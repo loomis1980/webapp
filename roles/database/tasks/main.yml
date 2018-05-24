@@ -12,7 +12,7 @@
     - postgresql96
     - postgresql96-server
     - postgresql96-libs
-    - postgresql96-contrib
+    - freeipa-admintools
     - python-psycopg2
     - libevent-devel
 
