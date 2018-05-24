@@ -1,9 +1,15 @@
 ---
 
-- name: download postgresql repo
+- name: create directory for pgbouncer
+  file:
+    path: /pgbouncer-1.8.1
+    state: directory
+    mode: 0755
+  
+- name: download pgbouncer source
   unarchive:
     src: https://pgbouncer.github.io/downloads/files/1.8.1/pgbouncer-1.8.1.tar.gz
-    dest: /pgbouncer
+    dest: /pgbouncer-1.8.1
     remote_src: yes
 
 
