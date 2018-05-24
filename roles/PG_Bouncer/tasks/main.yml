@@ -1,8 +1,14 @@
 ---
 
-- name: Install pgbouncer
+- name: Install pgbouncer repo
   get_url: https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-6-x86_64/pgdg-ami201503-93-9.3-3.noarch.rpm
-  dest: /etc/yum.repos.d
+  dest: /etc/yum.repos.d/
+  mode: 0644
+  
+- name: Install pgbouncer
+  yum:
+    name: pgbouncer
+    state: present
   
 - name: start and enable pgbouncer
   service: name=pgbouncer state=started enabled=yes
