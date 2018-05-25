@@ -48,3 +48,27 @@
     mode: 0755
     owner: postgres
     
+- name: create the configuration directory
+  file:
+    path: /etc/pgbouncer
+    state: directory
+    mode: 0755
+    owner: postgres
+  
+- name: copy over the pgbouncer.ini
+  template: src=pgbouncer.ini dest=/etc/pgbouncer/pgbouncer.ini
+  notify:
+    - reload pgbouncer
+    
+- name: change the file permissions on pgbouncer.ini
+  file:
+    path: /etc/pgbouncer/pgbouncer.ini
+    owner: postgres
+    group: postgres
+    mode: 0755
+    
+- name: copy the file over /etc/init.d/pgbouncer
+  template: src=
+    src
+    dest: /etc/init.d/pgbouncer.ini
+    mode: a+x
