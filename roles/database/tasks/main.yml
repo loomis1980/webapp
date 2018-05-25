@@ -1,10 +1,9 @@
 ---
 
 - name: download postgresql repo
-  get_url:
-    url: https://yum.postgresql.org/9.6/redhat/rhel-7.3-x86_64/pgdg-centos96-9.6-3.noarch.rpm
-    dest: /etc/yum.repos.d/
-    mode: 0644
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    state: present
 
 - name: install the server packages
   package: name={{ item }} state=installed
