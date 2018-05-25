@@ -16,15 +16,15 @@
     - python-psycopg2
     - libevent-devel
 
-- name: initialize the database only when /var/lib/pgsql/9.6/data/ is missing or empty
-  stat:
-    path: /var/lib/pgsql/9.6/data/
-  register: db_install
+#- name: initialize the database only when /var/lib/pgsql/9.6/data/ is missing or empty
+  #stat:
+    #path: /var/lib/pgsql/9.6/data/
+  #register: db_install
 
-- block:
-  - name: Initialize the database
-    command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
-  when: db_install.stat.exists == False
+#- block:
+- name: Initialize the database
+  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
+#when: db_install.stat.exists == False
 
 - name: start the postgresql service
   service: name=postgresql-9.6.service state=started enabled=yes
