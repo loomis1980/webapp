@@ -58,7 +58,7 @@
 - name: copy over the pgbouncer.ini
   copy:
     src: /pgbouncer-1.8.1/etc/pgbouncer.ini
-    dest: /etc/pgbouncer/pgbouncer.ini
+    dest: /etc/pgbouncer/
     
 - name: change the file permissions on pgbouncer.ini
   file:
