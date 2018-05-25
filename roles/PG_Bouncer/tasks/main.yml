@@ -54,24 +54,28 @@
     state: directory
     mode: 0755
     owner: postgres
-  
-- name: copy over the pgbouncer.ini
-  copy:
-    remote_src: /pgbouncer-1.8.1/etc/pgbouncer.ini
-    dest: /etc/pgbouncer/
     
-- name: change the file permissions on pgbouncer.ini
+- name: copy over pgbouncer.ini
+  template:
+    src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer.ini
+    dest: /etc/pgbouncer/pgbouncer.ini
+    
+- name: change file permissions on pgbouncer.ini
   file:
     path: /etc/pgbouncer/pgbouncer.ini
-    owner: postgres
-    group: postgres
     mode: 0644
+    owner: postgres
     
 - name: copy the file over /etc/init.d/pgbouncer
   template:
     src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer
     dest: /etc/init.d/pgbouncer
+    
+- name: change file permissions on init script
+  file:
+    path: /etc/init.d/pgbouncer
     mode: a+x
+    owner: root
     
 - name: add the service to the system start up and shutdown
   shell: chkconfig --add pgbouncer
