@@ -22,4 +22,4 @@
 - make:
   chdir: /pgbouncer-1.8.1
   target: install
-become: yes
+  become: yes
