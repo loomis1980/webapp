@@ -69,7 +69,7 @@
     
 - name: copy the file over /etc/init.d/pgbouncer
   template:
-    src: pgbouncer
+    src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer
     dest: /etc/init.d/pgbouncer
     mode: a+x
     
