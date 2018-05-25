@@ -56,19 +56,22 @@
     owner: postgres
   
 - name: copy over the pgbouncer.ini
-  template: src=pgbouncer.ini dest=/etc/pgbouncer/pgbouncer.ini
-  notify:
-    - reload pgbouncer
+  copy:
+    src: /pgbouncer-1.8.1/etc/pgbouncer.ini
+    dest: /etc/pgbouncer/pgbouncer.ini
     
 - name: change the file permissions on pgbouncer.ini
   file:
     path: /etc/pgbouncer/pgbouncer.ini
     owner: postgres
     group: postgres
-    mode: 0755
+    mode: 0644
     
 - name: copy the file over /etc/init.d/pgbouncer
-  template: src=
-    src
-    dest: /etc/init.d/pgbouncer.ini
+  template:
+    src: pgbouncer
+    dest: /etc/init.d/pgbouncer
     mode: a+x
+    
+- name: add the service to the system start up and shutdown
+  shell: chkconfig --add pgbouncer
