@@ -33,3 +33,18 @@
   shell: make install
   args:
     chdir: /pgbouncer-1.8.1
+
+- name: create the log directory for pgbouncer
+  file:
+    path: /var/log/pgbouncer
+    state: directory
+    mode: 0755
+    owner: postgres
+    
+- name: create the directory for service lock file
+  file:
+    path: /var/run/pgbouncer
+    state: directory
+    mode: 0755
+    owner: postgres
+    
