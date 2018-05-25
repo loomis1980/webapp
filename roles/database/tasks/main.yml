@@ -9,6 +9,7 @@
 - name: install the server packages
   package: name={{ item }} state=installed
   with_items:
+    - pgdg-centos96-9.6-3.noarch.rpm
     - postgresql96
     - postgresql96-server
     - postgresql96-libs
