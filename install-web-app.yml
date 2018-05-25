@@ -35,7 +35,7 @@
     - database
 
 - name: PG_Bouncer
-  hosts: bouncers
+  hosts: databases
   remote_user: root
   roles:
     - common
