@@ -38,5 +38,4 @@
   hosts: databases
   remote_user: root
   roles:
-    - common
     - PG_Bouncer
