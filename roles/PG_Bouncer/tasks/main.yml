@@ -15,4 +15,11 @@
 - name: download devel packages
   package: name={{ item }} state=present
   with_items:
-    - 
+    - gcc
+    - libevent-devel
+    - openssl-devel
+
+- make:
+  chdir: /pgbouncer-1.8.1
+  target: install
+become: yes
