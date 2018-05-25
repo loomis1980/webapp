@@ -59,6 +59,8 @@
   template:
     src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer.ini
     dest: /etc/pgbouncer/pgbouncer.ini
+  notify:
+    - restart pgbouncer
     
 - name: change file permissions on pgbouncer.ini
   file:
@@ -79,3 +81,12 @@
     
 - name: add the service to the system start up and shutdown
   shell: chkconfig --add pgbouncer
+  
+- name: start and enable pgbouncer
+  service: name=pgbouncer state=started enabled=yes
+  
+- name: open port 6432 in firewall
+  firewalld:
+    port: 6432/tcp
+    permanent: true
+    state: enabled
