@@ -24,7 +24,12 @@
   args:
     chdir: /pgbouncer-1.8.1
 
-- make:
-  chdir: /pgbouncer-1.8.1
-  target: install
-  become: yes
+- name: make 
+  shell: make
+  args:
+    chdir: /pgbouncer-1.8.1
+    
+- name: make install
+  shell: make install
+  args:
+    chdir: /pgbouncer-1.8.1
