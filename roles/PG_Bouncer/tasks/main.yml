@@ -12,7 +12,10 @@
     state: present
     
 - name: install the postgresql client
-  package: name=postgresql96 state=installed
+  package: name={{ item }} state=installed
+  with_items:
+    - postgresql96
+    - postgresql96-server
   
 - name: download pgbouncer source
   unarchive:
