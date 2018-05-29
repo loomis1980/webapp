@@ -5,6 +5,14 @@
     #path: /pgbouncer-1.8.1
     #state: directory
     #mode: 0755
+
+- name: download the postgresql client repo
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    state: present
+    
+- name: install the postgresql client
+  package: name=postgresql96 state=present enabled=yes
   
 - name: download pgbouncer source
   unarchive:
