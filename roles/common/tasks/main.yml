@@ -8,3 +8,4 @@
     - psmisc
     - nano
     - net-tools
+    - firewalld
