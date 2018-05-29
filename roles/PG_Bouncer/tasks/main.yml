@@ -18,6 +18,7 @@
     - gcc
     - libevent-devel
     - openssl-devel
+    - make
     
 - name: configure the pgbouncer
   shell: ./configure --prefix=/usr
