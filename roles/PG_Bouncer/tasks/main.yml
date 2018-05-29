@@ -12,7 +12,7 @@
     state: present
     
 - name: install the postgresql client
-  package: name=postgresql96 state=installed enabled=yes
+  package: name=postgresql96 state=installed
   
 - name: download pgbouncer source
   unarchive:
