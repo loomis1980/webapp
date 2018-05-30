@@ -1,30 +1,21 @@
 ---
 
-- name: download postgresql repo
-  yum:
-    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
-    state: present
-
-- name: install the server packages
-  package: name={{ item }} state=installed
+- name: Add the PostgreSQL 9.6 repo to sources.list.d
+  command: echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/postgresql.list
+  
+- name: Import the PostgreSQL signing key to the system.
+  command: wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+  
+- name: Update the repository
+  command: apt-get update
+  
+- name: Install the PostgreSQL 9.6 packages
+  package: name={{ item }} state=present
   with_items:
-    #- pgdg-centos96-9.6-3.noarch.rpm
-    - postgresql96
-    - postgresql96-server
-    - postgresql96-libs
-    - freeipa-admintools
-    - python-psycopg2
-    - libevent-devel
-
-#- name: initialize the database only when /var/lib/pgsql/9.6/data/ is missing or empty
-  #stat:
-    #path: /var/lib/pgsql/9.6/data/
-  #register: db_install
-
-#- block:
-#- name: Initialize the database
-  #command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
-#when: db_install.stat.exists == False
-
-- name: start the postgresql service
-  service: name=postgresql-9.6.service state=started enabled=yes
+    - postgresql-9.6
+    - postgresql-contrib-9.6
+    
+- name: In order to setup streaming replication there needs to be an archive directory
+  file:
+    path: 
+    
