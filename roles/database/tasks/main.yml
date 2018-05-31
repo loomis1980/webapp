@@ -55,4 +55,10 @@
   template: 
     src: "templates/postgresql.conf" 
     dest: "/etc/postgresql/9.6/main/postgresql.conf"
+    
+- name: copy over the primary .pgpass file
+  template:
+    src: "templates/.pgpass_primary"
+    dest: "/var/lib/postgresql/.pgpass"
+  when: {{ inventory_hostname }} = test1.internal.virtnet
   
