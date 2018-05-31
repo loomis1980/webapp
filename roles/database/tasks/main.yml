@@ -56,9 +56,22 @@
     src: "templates/postgresql.conf" 
     dest: "/etc/postgresql/9.6/main/postgresql.conf"
     
+- name: set proper permissions on the config file
+  file:
+    path: /etc/postgresql/9.6/main/postgresql.conf
+    owner: postgres
+    group: postgres
+    mode: 0644
+    
 - name: copy over the primary .pgpass file
   template:
     src: "templates/.pgpass_primary"
     dest: "/var/lib/postgresql/.pgpass"
   when: inventory_hostname == "{{ primary_db }}"
   
+- name: set permissions on the .pgpass file
+  file:
+    path: /var/lib/postgresql/.pgpass
+    owner: postgres
+    group: postgres
+    mode: 0600
