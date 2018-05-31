@@ -34,7 +34,7 @@
   postgresql_user:
     db: postgres
     name: pgpool
-    password: "{{ db_password }}"
+    password: "{{ pg_db_pass }}"
     priv: ALL
     
 - name: Create Database user repl
@@ -43,5 +43,5 @@
   postgresql_user:
     db: replication
     name: repl
-    password: " {{ db_password }}"
+    password: " {{ pg_db_pass }}"
     priv: all
