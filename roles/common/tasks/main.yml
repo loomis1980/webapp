@@ -4,7 +4,7 @@
   with_items:
     - vim
     - curl
-    - epel-release
+    #- epel-release
     - psmisc
     - nano
     - net-tools
