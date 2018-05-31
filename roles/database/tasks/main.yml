@@ -28,7 +28,7 @@
     group: postgres
     mode: 0700
 
-- name: Create Database Users
+- name: Create Database user pgpool
   become: yes
   become_user: postgres
   postgresql_user:
@@ -37,3 +37,11 @@
     password: "{{ db_password }}"
     priv: ALL
     
+- name: Create Database user repl
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: replication
+    name: repl
+    password: " {{ db_password }}"
+    priv: all
