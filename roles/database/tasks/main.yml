@@ -67,7 +67,7 @@
   template:
     src: "templates/pgpass_primary"
     dest: "/var/lib/postgresql/.pgpass"
-  when: inventory_hostname == "{{ }}"
+  when: inventory_hostname == "{{ primary_db }}"
   
 - name: set permissions on the .pgpass file
   file:
