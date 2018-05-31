@@ -47,3 +47,12 @@
     password: " {{ pg_db_pass }}"
     role_attr_flags: REPLICATION
     priv: all
+
+- name: remove the old postgresql.conf file
+  file: path=/etc/postgresql/9.6/main/postgresql.conf state=absent
+  
+- name: copy over the postgresql.conf file
+  template: 
+    src: "templates/postgresql.conf" 
+    dest: "/etc/postgresql/9.6/main/postgresql.conf"
+  
