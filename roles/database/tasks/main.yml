@@ -26,4 +26,14 @@
     state: directory
     owner: postgres
     group: postgres
-    mode: 0755
+    mode: 0700
+
+- name: Create Database Users
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: postgres
+    name: pgpool
+    password: "{{ db_password }}"
+    priv: ALL
+    
