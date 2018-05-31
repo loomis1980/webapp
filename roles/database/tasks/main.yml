@@ -1,13 +1,17 @@
 ---
 
-#- name: Add the PostgreSQL 9.6 repo to sources.list.d
-  #command: echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/postgresql.list
+- name: Add the PostgreSQL 9.6 repo to sources.list.d
+  apt_repository: 
+    repo: deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+    state: present
+    
+- name: Import the PostgreSQL signing key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
   
-#- name: Import the PostgreSQL signing key to the system.
-  #command: wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
-  
-#- name: Update the repository
-  #command: apt-get update
+- name: Update the repository
+  command: apt-get update
   
 - name: Install the PostgreSQL 9.6 packages
   package: name={{ item }} state=present
@@ -19,4 +23,6 @@
   file:
     path: "{{ pg_archive_dir }}"
     state: directory
+    owner: postgres
+    group: postgres
     mode: 0755
