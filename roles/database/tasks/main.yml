@@ -42,7 +42,8 @@
   become: yes
   become_user: postgres
   postgresql_user:
-    db: replication
+    db: postgres
     name: repl
     password: " {{ pg_db_pass }}"
+    role_attr_flags: REPLICATION
     priv: all
