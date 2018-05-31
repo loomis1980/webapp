@@ -19,6 +19,7 @@
   with_items:
     - postgresql-9.6
     - postgresql-contrib-9.6
+    - python-psycopg2
     
 - name: In order to setup streaming replication there needs to be an archive directory
   file:
