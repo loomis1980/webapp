@@ -17,5 +17,6 @@
     
 - name: In order to setup streaming replication there needs to be an archive directory
   file:
-    path: 
-    
+    path: "{{ pg_archive_dir }}"
+    state: directory
+    mode: 0755
