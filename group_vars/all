@@ -46,3 +46,5 @@ pg_bindir: /usr/lib/postgresql/9.6/
 pg_homedir: /var/lib/postgresql/9.6/
 pg_datadir: /var/lib/postgresql/9.6/main
 pg_archive_dir: /var/lib/postgresql/archivedir
+# I will change this password as soon as the database is created.
+pg_db_pass: test
