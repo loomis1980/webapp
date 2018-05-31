@@ -42,7 +42,7 @@ mkhome: --mkhomedir
 script_location: /home/ls1980/code/webapp/roles/freeipa/files/ipa_script.sh
 
 # Postgresql variables
-pg_bindir=/usr/lib/postgresql/9.6/
-pg_homedir=/var/lib/postgresql/9.6/
-pg_datadir=/var/lib/postgresql/9.6/main
-pg_archive_dir=/var/lib/postgresql/archivedir
+pg_bindir: /usr/lib/postgresql/9.6/
+pg_homedir: /var/lib/postgresql/9.6/
+pg_datadir: /var/lib/postgresql/9.6/main
+pg_archive_dir: /var/lib/postgresql/archivedir
