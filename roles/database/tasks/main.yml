@@ -60,5 +60,5 @@
   template:
     src: "templates/.pgpass_primary"
     dest: "/var/lib/postgresql/.pgpass"
-  when: {{ inventory_hostname }} = test1.internal.virtnet
+  when: inventory_hostname == "{{ primary_db }}"
   
