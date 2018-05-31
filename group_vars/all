@@ -35,7 +35,14 @@ vhost_server_alias: www.{{ vhost_fqdn }}
 vhost_domain_error_log: /var/log/httpd/{{ fqdn }}-error_log
 vhost_domain_access_log: /var/log/httpd/{{ fqdn }}-access_log combined
 
+### Freeipa id management variables
 ssh_opts: --ssh-trust-dns
 mkhome: --mkhomedir
 
 script_location: /home/ls1980/code/webapp/roles/freeipa/files/ipa_script.sh
+
+# Postgresql variables
+pg_bindir=/usr/lib/postgresql/9.6/
+pg_homedir=/var/lib/postgresql/9.6/
+pg_datadir=/var/lib/postgresql/9.6/main
+pg_archive_dir=/var/lib/postgresql/archivedir
