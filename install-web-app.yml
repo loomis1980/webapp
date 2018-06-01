@@ -39,3 +39,9 @@
   remote_user: root
   roles:
     - PG_Bouncer
+
+- name: PGPool2 setup
+  hosts: pools
+  remote_user: root
+  roles:
+    - pgpool
