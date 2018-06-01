@@ -1,104 +1,106 @@
 ---
 
-#- name: create directory for pgbouncer
-  #file:
-    #path: /pgbouncer-1.8.1
-    #state: directory
-    #mode: 0755
+- block:
+  - name: create directory for pgbouncer
+    file:
+      path: /pgbouncer-1.8.1
+      state: directory
+      mode: 0755
 
-- name: download the postgresql client repo
-  yum:
-    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
-    state: present
+  - name: download the postgresql client repo
+    yum:
+      name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+      state: present
     
-- name: install the postgresql client
-  package: name={{ item }} state=installed
-  with_items:
-    - postgresql96
-    - postgresql96-server
+  - name: install the postgresql client
+    package: name={{ item }} state=installed
+    with_items:
+      - postgresql96
+      - postgresql96-server
   
-- name: download pgbouncer source
-  unarchive:
-    src: https://pgbouncer.github.io/downloads/files/1.8.1/pgbouncer-1.8.1.tar.gz
-    dest: /
-    remote_src: yes
+  - name: download pgbouncer source
+    unarchive:
+      src: https://pgbouncer.github.io/downloads/files/1.8.1/pgbouncer-1.8.1.tar.gz
+      dest: /
+      remote_src: yes
 
-- name: download devel packages
-  package: name={{ item }} state=present
-  with_items:
-    - gcc
-    - libevent-devel
-    - openssl-devel
-    - make
+  - name: download devel packages
+    package: name={{ item }} state=present
+    with_items:
+      - gcc
+      - libevent-devel
+      - openssl-devel
+      - make
     
-- name: configure the pgbouncer
-  shell: ./configure --prefix=/usr
-  args:
-    chdir: /pgbouncer-1.8.1
+  - name: configure the pgbouncer
+    shell: ./configure --prefix=/usr
+    args:
+      chdir: /pgbouncer-1.8.1
 
-- name: make 
-  shell: make
-  args:
-    chdir: /pgbouncer-1.8.1
+  - name: make 
+    shell: make
+    args:
+      chdir: /pgbouncer-1.8.1
     
-- name: make install
-  shell: make install
-  args:
-    chdir: /pgbouncer-1.8.1
+  - name: make install
+    shell: make install
+    args:
+      chdir: /pgbouncer-1.8.1
 
-- name: create the log directory for pgbouncer
-  file:
-    path: /var/log/pgbouncer
-    state: directory
-    mode: 0755
-    owner: postgres
+  - name: create the log directory for pgbouncer
+    file:
+      path: /var/log/pgbouncer
+      state: directory
+      mode: 0755
+      owner: postgres
     
-- name: create the directory for service lock file
-  file:
-    path: /var/run/pgbouncer
-    state: directory
-    mode: 0755
-    owner: postgres
+  - name: create the directory for service lock file
+    file:
+      path: /var/run/pgbouncer
+      state: directory
+      mode: 0755
+      owner: postgres
     
-- name: create the configuration directory
-  file:
-    path: /etc/pgbouncer
-    state: directory
-    mode: 0755
-    owner: postgres
+  - name: create the configuration directory
+    file:
+      path: /etc/pgbouncer
+      state: directory
+      mode: 0755
+      owner: postgres
     
-- name: copy over pgbouncer.ini
-  template:
-    src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer.ini
-    dest: /etc/pgbouncer/pgbouncer.ini
-  notify:
+  - name: copy over pgbouncer.ini
+    template:
+      src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer.ini
+      dest: /etc/pgbouncer/pgbouncer.ini
+    notify:
     - restart pgbouncer
     
-- name: change file permissions on pgbouncer.ini
-  file:
-    path: /etc/pgbouncer/pgbouncer.ini
-    mode: 0644
-    owner: postgres
+  - name: change file permissions on pgbouncer.ini
+    file:
+      path: /etc/pgbouncer/pgbouncer.ini
+      mode: 0644
+      owner: postgres
     
-- name: copy the file over /etc/init.d/pgbouncer
-  template:
-    src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer
-    dest: /etc/init.d/pgbouncer
+  - name: copy the file over /etc/init.d/pgbouncer
+    template:
+      src: /home/ls1980/code/webapp/roles/PG_Bouncer/templates/pgbouncer
+      dest: /etc/init.d/pgbouncer
     
-- name: change file permissions on init script
-  file:
-    path: /etc/init.d/pgbouncer
-    mode: a+x
-    owner: root
+  - name: change file permissions on init script
+    file:
+      path: /etc/init.d/pgbouncer
+      mode: a+x
+      owner: root
     
-- name: add the service to the system start up and shutdown
-  shell: chkconfig --add pgbouncer
+  - name: add the service to the system start up and shutdown
+    shell: chkconfig --add pgbouncer
   
-- name: start and enable pgbouncer
-  service: name=pgbouncer state=started enabled=yes
+  - name: start and enable pgbouncer
+    service: name=pgbouncer state=started enabled=yes
   
-- name: open port 6432 in firewall
-  firewalld:
-    port: 6432/tcp
-    permanent: true
-    state: enabled
+  - name: open port 6432 in firewall
+    firewalld:
+      port: 6432/tcp
+      permanent: true
+      state: enabled
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
