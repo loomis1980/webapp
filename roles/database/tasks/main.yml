@@ -51,6 +51,9 @@
 - name: remove the old postgresql.conf file
   file: path=/etc/postgresql/9.6/main/postgresql.conf state=absent
   
+- name: remove the old pg_hba.conf file
+  file: path=/etc/postgresql/9.6/main/pg_hba.conf state=absent
+  
 - name: copy over the postgresql.conf file
   template: 
     src: "templates/postgresql.conf" 
@@ -64,7 +67,21 @@
     owner: postgres
     group: postgres
     mode: 0644
-    
+
+- name: copy over the pg_hba.conf file
+  template:
+    src: "templates/pg_hba.conf"
+    dest: "/etc/postgresql/9.6/main/pg_hba.conf
+  notify:
+  - restart postgresql
+  
+- name: set proper permission on the pg_hba.conf file
+  file:
+    path: /etc/postgresql/9.6/main/pg_hba.conf
+    owner: postgres
+    group: postgres
+    mode: 0644
+
 - name: copy over the primary .pgpass file
   template:
     src: "templates/pgpass_primary"
