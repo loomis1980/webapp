@@ -1,5 +1,6 @@
 ---
 
+# If Installing this on Centos or RHEL have to compile it manually. 
 - block:
   - name: create directory for pgbouncer
     file:
