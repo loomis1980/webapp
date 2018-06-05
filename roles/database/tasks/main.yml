@@ -81,7 +81,7 @@
     owner: postgres
     group: postgres
     mode: 0644
-
+    
 - name: copy over the primary .pgpass file
   template:
     src: "templates/pgpass_primary"
