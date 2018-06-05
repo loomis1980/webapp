@@ -56,8 +56,8 @@
   
 - name: copy over the postgresql.conf file
   template: 
-    src="templates/postgresql.conf" 
-    dest="/etc/postgresql/9.6/main/postgresql.conf"
+    src=templates/postgresql.conf 
+    dest=/etc/postgresql/9.6/main/postgresql.conf
   notify:
     - restart postgresql
     
@@ -70,8 +70,8 @@
 
 - name: copy over the pg_hba.conf file
   template:
-    src="templates/pg_hba.conf"
-    dest="/etc/postgresql/9.6/main/pg_hba.conf
+    src=templates/pg_hba.conf
+    dest=/etc/postgresql/9.6/main/pg_hba.conf
   notify:
     - restart postgresql
   
@@ -84,14 +84,14 @@
     
 - name: copy over the primary .pgpass file
   template:
-    src="templates/pgpass_primary"
-    dest="/var/lib/postgresql/.pgpass"
+    src=templates/pgpass_primary
+    dest=/var/lib/postgresql/.pgpass
   when: inventory_hostname == "{{ primary_db }}"
   
 - name: copy over the secondary .pgpass file
   template:
-    src="templates/pgpass_secondary"
-    dest="/var/lib/postgresql/.pgpass"
+    src=templates/pgpass_secondary
+    dest=/var/lib/postgresql/.pgpass
   when: inventory_hostname == "{{ secondary_db }}"
   
 - name: set permissions on the .pgpass file
