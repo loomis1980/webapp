@@ -59,7 +59,7 @@
     src: "templates/postgresql.conf" 
     dest: "/etc/postgresql/9.6/main/postgresql.conf"
   notify:
-  - restart postgresql
+    - restart postgresql
     
 - name: set proper permissions on the config file
   file:
