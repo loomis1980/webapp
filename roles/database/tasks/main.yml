@@ -44,7 +44,7 @@
   postgresql_user:
     db: postgres
     name: repl
-    password: " {{ pg_db_pass }}"
+    password: "{{ pg_db_pass }}"
     role_attr_flags: REPLICATION
     priv: all
 
